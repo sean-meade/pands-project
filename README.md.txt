@@ -5,7 +5,15 @@ Initial plan and notes:
 
 1. Research background information about the data set and write a summary about it:
     - Check link: http://archive.ics.uci.edu/ml/datasets/Iris.
+        -- Downloaded data set, description and index.
+        -- The data cotains 3 different types of Iris with measurements of the petals.
     - Google about "Fisher's Iris data set.", collect references (websites) and make notes.
+        -- Commonly used in pattern recognition literature.
+        -- Created by Sir Ronald Aylmer Fisher who was a British statistician and geneticist who pioneered the 
+        application of statistical procedures to the design of scientific experiments. (https://www.britannica.com/biography/Ronald-Aylmer-Fisher)
+        -- It includes measurements of both the sepal and petal giving their width and length (include images to
+        show what they are on the flowers).
+        -- 
 
 2. Keep a list of references you used in completing the project:
     - Create a favourites bar folder and subsequently creat further folders to keep track of references.
