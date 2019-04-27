@@ -23,15 +23,28 @@ with open('iris.csv', 'r') as csvFile:
     if len(virginica) != 50 | len(versicolor) != 50 | len(setosa):
         print("Error with size of Lists.")
 
-    def mean(list_name, index):
+    def meanMaxMin(list_name, index):
         count = len(list_name)
         total = 0
+        maxMinList = []
         for j in range(0, count):
             total = total + float(list_name[j][index])
-        mean = total/count
-        return mean
 
-    print(mean(versicolor, 0))
+            maxMinList.append(float(list_name[j][index]))
+
+        mean = total/count
+        listMax = max(maxMinList)
+        listMin = min(maxMinList)
+
+
+        print(listMin, listMax, mean)
+
+    def wholeFlower(list_name):
+        index = len(list_name[0])
+        for i in range(0, index):
+            meanMaxMin(list_name, i)
+
+    wholeFlower(versicolor)
 
 
 
