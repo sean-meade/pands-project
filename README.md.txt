@@ -16,10 +16,10 @@ Initial plan and notes:
         -- 
 
 2. Keep a list of references you used in completing the project:
-    - Create a favourites bar folder and subsequently creat further folders to keep track of references.
+    X Create a favourites bar folder and subsequently creat further folders to keep track of references.
 
 3. Download the data set and write some Python code to investigate it.
-    - Download data set and add to repository.
+    X Download data set and add to repository.
     - Google "best practices for investigating data in Python" make notes and compile list of main common practices. 
 
 4. Summarise the data set by, for example, calculating the maximum, minimum and mean of each column of the data set. 
