@@ -132,9 +132,13 @@ Then it will tell you what it matches with most:
 
 ## References:
 [1] - archive.ics.uci.edu/ml/datasets/Iris
+
 [2] - https://pdfs.semanticscholar.org/6ccd/4303f68f3543fc794c376ce00395947a79b6.pdf
+
 [3] - http://www.comp.tmu.ac.jp/morbier/R/Fisher-1936-Ann._Eugen.pdf
+
 [4] - Albon, C., 2018. Machine Learning with Python Cookbook: Practical Solutions from 
 Preprocessing to Deep Learning. 1st ed. 1005 Gravenstein Highway North Sebastopol, CA 95472: O'Reilly Media, 
 Incorporated, 2018.
+
 [5] - https://www.kaggle.com/lalitharajesh/iris-dataset-exploratory-data-analysis
