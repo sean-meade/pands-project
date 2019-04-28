@@ -81,6 +81,7 @@ def minMaxMin(arrayName, name):
         f"Sepal width min, max and mean: {SepWmin}, {SepWmax}, {SepWmean}\n"
         f"Petal length min, max and mean: {PetLmin}, {PetLmax}, {PetLmean}\n"
         f"Petal width min, max and mean: {PetWmin}, {PetWmax}, {PetWmean}")
+    print("\n")
 
 # Call function to go through each Iris and produce min, max and mean
 allFlowers(flowers)
@@ -198,19 +199,19 @@ data_standardized = standardizer.fit_transform(irisDataSet)
 nearest_neighbors = NearestNeighbors(n_neighbors=2).fit(data_standardized)
 
 # A new entry to test (i.e. a new unidentified iris with measurements)
-new_entry = [1, 1, 1, 1]
+
+sepalLength = float(input("Please enter sepal length measurement for unidentified iris: "))
+sepalWidth = float(input("Please enter sepal width measurement for unidentified iris: "))
+petalLength = float(input("Please enter petal length measurement for unidentified iris: "))
+petalWidth = float(input("Please enter petal width measurement for unidentified iris: "))
+
+new_entry = [sepalLength, sepalWidth, petalLength, petalWidth]
 
 # Find 
 distances, indices = nearest_neighbors.kneighbors([new_entry])
 
 nearestN = data_standardized[indices]
 
-print(nearestN)
+print(f"The two nearest fits are {nearestN[0][0]} and {nearestN[0][1]}.)
 
-if(all(x in setosaList for x in nearestN[0])):
-    print("This could possibly be a Setosa.")
-elif(all(x in versicolorList for x in nearestN[0])):
-    print("This could possibly be a Versicolor.")
-elif(all(x in virginicaList for x in nearestN[0])):
-    print("This could possibly be a Virginica.")
-
+# By these outputs it can be determined to some degree of sucess which iris it is.
