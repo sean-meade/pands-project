@@ -1,66 +1,46 @@
 import csv
+import numpy as np
+import matplotlib.pyplot as plt
 
 with open('iris.csv', 'r') as csvFile:
     reader = csv.reader(csvFile)
     x = 0
-    setosa = []
-    versicolor = []
-    virginica = []
+    setosaList = []
+    versicolorList = []
+    virginicaList = []
     
     for row in reader:
         if row[4] == "Iris-setosa":
-            setosa.append(row[0:4])
+            setosaList.append(row[0:4])
+            name = "Setosa"
 
         elif row[4] == "Iris-versicolor":
-            versicolor.append(row[0:4])
+            versicolorList.append(row[0:4])
+            name = "Versicolor"
             
         elif row[4] == "Iris-virginica":
-            virginica.append(row[0:4])
+            virginicaList.append(row[0:4])
+            name = "Virginica"
         
         else:
             print("Unlabled entry.")
         
-    if len(virginica) != 50 | len(versicolor) != 50 | len(setosa):
+
+if len(virginicaList) != 50 | len(versicolorList) != 50 | len(setosaList):
         print("Error with size of Lists.")
 
-    def meanMaxMin(list_name, index):
-        count = len(list_name)
-        total = 0
-        maxMinList = []
-        for j in range(0, count):
-            total = total + float(list_name[j][index])
+Setosa = np.array(setosaList).astype(np.float)
+Versicolor = np.array(versicolorList).astype(np.float)
+Virginica = np.array(virginicaList).astype(np.float)
 
-            maxMinList.append(float(list_name[j][index]))
+def mean(arrayName):
 
-        mean = total/count
-        listMax = max(maxMinList)
-        listMin = min(maxMinList)
+    SepLmean = np.mean(arrayName[:,0])
+    SepWmean = np.mean(arrayName[:,1])
+    PetLmean = np.mean(arrayName[:,2])
+    PetWmean = np.mean(arrayName[:,3])
 
-
-        print(listMin, listMax, mean)
-
-    def wholeFlower(list_name):
-        index = len(list_name[0])
-        for i in range(0, index):
-            meanMaxMin(list_name, i)
-
-    wholeFlower(versicolor)
+    print(f"For {name}:\nSepal Length mean: {SepLmean}\nSepal width mean: {SepWmean}\nPetal length mean: {PetLmean}\nPetal width mean: {PetWmean}")
 
 
-
-
-        
-        
-        
-        
-        
-        
-"""sepalL.append(row[0])
-sepalW.append(row[1])
-petalL.append(row[2])
-petalw.append(row[3])
-sepalL = []
-sepalW = []
-petalL = []
-petalW = []
-    """
+mean(Setosa)
