@@ -12,15 +12,12 @@ with open('iris.csv', 'r') as csvFile:
     for row in reader:
         if row[4] == "Iris-setosa":
             setosaList.append(row[0:4])
-            name = "Setosa"
 
         elif row[4] == "Iris-versicolor":
             versicolorList.append(row[0:4])
-            name = "Versicolor"
             
         elif row[4] == "Iris-virginica":
             virginicaList.append(row[0:4])
-            name = "Virginica"
         
         else:
             print("Unlabled entry.")
@@ -33,14 +30,42 @@ Setosa = np.array(setosaList).astype(np.float)
 Versicolor = np.array(versicolorList).astype(np.float)
 Virginica = np.array(virginicaList).astype(np.float)
 
-def mean(arrayName):
+flowers = [Setosa, Versicolor, Virginica]
 
+def allFlowers(allFlowers):
+    for i in range(0,len(allFlowers)):
+        
+        if i == 0:
+            name = "Setosa"
+        elif i == 1:
+            name = "Versicolor"
+        elif i == 2:
+            name = "Virginica"
+        else:
+            print("Error with data set. Please investigate.")
+        minMaxMin(allFlowers[i], name)
+
+
+def minMaxMin(arrayName, name):
+
+    name = name
+    SepLmin = np.min(arrayName[:,0])
+    SepLmax = np.max(arrayName[:,0])
     SepLmean = np.mean(arrayName[:,0])
+    SepWmin = np.min(arrayName[:,1])
+    SepWmax = np.max(arrayName[:,1])
     SepWmean = np.mean(arrayName[:,1])
+    PetLmin = np.min(arrayName[:,2])
+    PetLmax = np.max(arrayName[:,2])
     PetLmean = np.mean(arrayName[:,2])
+    PetWmin = np.min(arrayName[:,3])
+    PetWmax = np.max(arrayName[:,3])
     PetWmean = np.mean(arrayName[:,3])
 
-    print(f"For {name}:\nSepal Length mean: {SepLmean}\nSepal width mean: {SepWmean}\nPetal length mean: {PetLmean}\nPetal width mean: {PetWmean}")
+    print(f"\nFor {name}:\nSepal Length min, max and mean:{SepLmin}, {SepLmax}, {SepLmean}\n"
+        f"Sepal width min, max and mean: {SepWmin}, {SepWmax}, {SepWmean}\n"
+        f"Petal length min, max and mean: {PetLmin}, {PetLmax}, {PetLmean}\n"
+        f"Petal width min, max and mean: {PetWmin}, {PetWmax}, {PetWmean}")
 
 
-mean(Setosa)
+allFlowers(flowers)
