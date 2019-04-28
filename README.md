@@ -7,16 +7,11 @@
 
 
 The iris flower data set (sometimes referred to as Fisher’s Iris data set) was first encountered in 1936 
-
 in a paper titled The use of multiple measurements in taxonomic problems. In it a man by the name 
-
 Ronald Fisher used measurements of the sepal and petal of three different types of iris flowers 
-
 (Setosa, Versicolour and Virginica). There are 150 sets of measurements each containing the width 
-
 and length of both the sepal and petal (fifty times for each). Figure 1 shows how similar the three 
-
-irises are and indicates where the petal and sepal are on the iris plant.
+irises are and indicates where the petal and sepal are on the iris plant. [2]
 
 
 
@@ -24,7 +19,7 @@ irises are and indicates where the petal and sepal are on the iris plant.
 
 
 
-## So who was Ronald Fisher?
+## So who was Ronald Fisher? [3]
 
 Sir Ronald Aylmer Fisher (to give him his full title) was a British Statistician and Geneticist. Born in 
 East Finchley in 1890 Fisher started to show a “special ability” when it came to mathematics at an 
@@ -46,13 +41,12 @@ developed abilities clearly pursued knowledge over financial gain which is what 
 an influential person in statistics and is considered “the single most important figure in 20th century 
 statistics”.[1]
 
-## An in-depth Look at the Data Set:
+## An more in-depth Look at the Data Set:
 
 First off, I think it would help to have a visual representation of the data set. Below is a table 
 containing the first 4 rows of the data set and the headings of each column.
 
 ![First four rows of the data set](Images-and-tables/firstFourRows.PNG)
-### First four rows of the data set
 
 The heading of each column (i.e. sepal length, sepal width, petal length etc.) are called attributes. 
 You can think of attributes as features each flower has. 
@@ -64,7 +58,6 @@ First by splitting the data up into these three groups and preforming some calcu
 and maximum values, the mean and the standard deviation we can draw some initial conclusions (see table below).
 
 ![Min, max, mean and standard deviation of all columns of measurements](Images-and-tables/minMaxMeanStd.PNG)
-### Min, max, mean and standard deviation of all columns of measurements
 
 From this table it’s clear that Setosa over all have the smallest variation in measurements (standard 
 deviation or std in table). This gives us an early indication that if we are going to be able to discern 
@@ -82,20 +75,66 @@ unknown one is within that band. If it is there is a high chance it is a setosa.
 seem to be scattered together with no possible way of separating the two.
 
 ![Sepal length vs. Sepal Width](Images-and-tables/SepalLvsW.PNG)
-### Sepal length vs. Sepal Width
 
 The next graph is petal length plotted against petal width. This shows a distinct separation of setosa from
 versicolor and virginica. Those last two have more some cross over but not as much as the sepal graph. 
 
 ![Petal length vs. Petal Width](Images-and-tables/PetalLvsW.PNG)
-### Petal length vs. Petal Width
 
+Setosa has some distinct features and be clearly isolated. The Python code also has a graph that compares width and
+length multiplied together for sepal and petal and compared. Although as you can see below it isn’t better for
+clearly separating versicolor and virginica. 
 
+![Sepal Length x Width vs. Petal Length x Width](Images-and-tables/SepLWvsPetLW.PNG)
 
+This is the reason this is such a popular data set. The next thing some people do is use algorithms.
 
+### K-Nearest Neighbor:
 
+In the Python code I use an algorithm (k-nearest neighbor through module scikit-learn) to find the closest two sets
+of measurements. The idea is that you compare the current data set with your new measurements of an unknown iris and
+find the closest matches. This would give you a clear idea and a good estimate of what type of iris it is.
 
+To improve the K-Nearest algorithm more testing would have to be done. In this explanation the scikit-learn
+k-nearest algorithm uses a distance called Minkowski [4].
 
+![KNN Minkowski distance formula](Images-and-tables/knn.PNG)
 
+For the purpose of this explanation this formula doesn’t need to be broken down too much but it is worth noting that
+by default scikit-learn has p=2 (which is known as Euclidean distance), it might be worth testing and comparing
+accuracy with different values of p (1 = Manhattan distance). 
 
+### Python File (fisherIrisData):
 
+This part of the documentation explains how to use the python file included. The first thing to do is run the
+fisherIrisData.py file from the pand-project folder on the command line like so:
+
+![Loading python file](Images-and-tables/cmdLine.PNG)
+
+Next the python file will automatically generate the min, max, mean and standard deviation for each list of
+measurement for each iris as shown:
+
+![Automatic print of min, max, mean and std](Images-and-tables/autoMinMaxMeanStd.PNG)
+
+And three graphs (as shown in in-dept section) are generated automatically.
+
+It then prompts the user for measurements of an unknown iris.
+
+![Prompt for measurements](Images-and-tables/prompt.PNG)
+
+Filling in these measurements it will use KNN to produce the two nearest matching set of measurements.
+
+![Prompt for measurements](Images-and-tables/Compare.PNG)
+
+Then it will tell you what it matches with most:
+
+![Prints what it matches with](Images-and-tables/match.PNG)
+
+## References:
+[1] - archive.ics.uci.edu/ml/datasets/Iris
+[2] - https://pdfs.semanticscholar.org/6ccd/4303f68f3543fc794c376ce00395947a79b6.pdf
+[3] - http://www.comp.tmu.ac.jp/morbier/R/Fisher-1936-Ann._Eugen.pdf
+[4] - Albon, C., 2018. Machine Learning with Python Cookbook: Practical Solutions from 
+Preprocessing to Deep Learning. 1st ed. 1005 Gravenstein Highway North Sebastopol, CA 95472: O'Reilly Media, 
+Incorporated, 2018.
+[5] - https://www.kaggle.com/lalitharajesh/iris-dataset-exploratory-data-analysis
