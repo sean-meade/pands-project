@@ -39,7 +39,9 @@ with open('iris.csv', 'r') as csvFile:
 # Check to see if all data is there (50 in each)
 if len(virginicaList) != 50 | len(versicolorList) != 50 | len(setosaList):
         print("Error with size of Lists.")
-
+'''
+Used reference [8] here to determine what to do whit the arrays
+'''
 # Convert lists to numpy arrays with floats
 Setosa = np.array(setosaList).astype(np.float)
 Versicolor = np.array(versicolorList).astype(np.float)
@@ -267,4 +269,5 @@ Websites:
 [5] - https://pythonspot.com/matplotlib-scatterplot/
 [6] - https://matplotlib.org/api/_as_gen/matplotlib.pyplot.xlabel.html
 [7] - http://archive.ics.uci.edu/ml/datasets/Iris
+[8] - https://docs.scipy.org/doc/numpy/reference/generated/numpy.array.html
 '''
