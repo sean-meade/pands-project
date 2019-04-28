@@ -7,7 +7,7 @@ import numpy as np
 import matplotlib.pyplot as plt
 
 '''
-Used reference [3] and [4] for dealing with list and arrays here. 
+Used reference [3] and [4] for dealing with lists and arrays here. 
 '''
 # Taking in data from the csv file
 with open('iris.csv', 'r') as csvFile:
@@ -40,7 +40,7 @@ with open('iris.csv', 'r') as csvFile:
 if len(virginicaList) != 50 | len(versicolorList) != 50 | len(setosaList):
         print("Error with size of Lists.")
 
-# Convert lists to numpy arrays
+# Convert lists to numpy arrays with floats
 Setosa = np.array(setosaList).astype(np.float)
 Versicolor = np.array(versicolorList).astype(np.float)
 Virginica = np.array(virginicaList).astype(np.float)
@@ -61,13 +61,13 @@ def allFlowers(allFlowers):
             name = "Virginica"
         else:
             print("Error with data set. Please investigate.")
-        minMaxMin(allFlowers[i], name)
+        minMaxMean(allFlowers[i], name)
 
 # Calculate min, max and mean of each element of the data for each iris
-def minMaxMin(arrayName, name):
+def minMaxMean(arrayName, name):
 
     name = name
-
+    #set values for each
     SepLmin = np.min(arrayName[:,0])
     SepLmax = np.max(arrayName[:,0])
     SepLmean = np.mean(arrayName[:,0])
@@ -87,7 +87,8 @@ def minMaxMin(arrayName, name):
     PetWmax = np.max(arrayName[:,3])
     PetWmean = np.mean(arrayName[:,3])
     PetWstd = np.std(arrayName[:,3])
-
+    
+    # Print all values
     print(f"\nFor {name}:\n"
             f"Sepal Length min, max, mean and standard deviation: {round(SepLmin, 2)}, {round(SepLmax, 2)}, {round(SepLmean, 2)}, {round(SepLstd, 2)}\n"
             f"Sepal width min, max, mean and standard deviation: {round(SepWmin, 2)}, {round(SepWmax, 2)}, {round(SepWmean, 2)}, {round(SepWstd, 2)}\n"
@@ -118,6 +119,7 @@ groups = ("Setosa", "Versicolor", "Virginica")
 
 # Create plot
 fig = plt.figure()
+# Set one by one grid
 ax = fig.add_subplot(1, 1, 1)
 
 for data, color, group in zip(data, colors, groups):
@@ -213,7 +215,9 @@ Used Reference 1 'Machine Learning with Python Cookbook' for all next section ex
 
 from sklearn.neighbors import KNeighborsClassifier
 from sklearn.preprocessing import StandardScaler
+
 x = irisDataSet
+# Set targets
 y = np.array([0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
  0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,
  1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2,
@@ -241,6 +245,7 @@ new_entry = [sepalLength, sepalWidth, petalLength, petalWidth]
 #Predict the class of new_entry
 predict = nearest_neighbors.predict([new_entry, new_entry])
 
+# Print what type it is to console
 if predict[0] == 0:
     print("It matches close to a Setosa in data set.")
 elif predict[0] == 1:
