@@ -199,28 +199,44 @@ plt.legend(loc=2)
 # Using this algorithm wit the data we have we can find a new data entry (an unidentified iris)
 # and find a closest match to it.
 
-from sklearn.neighbors import NearestNeighbors
+from sklearn.neighbors import KNeighborsClassifier
 from sklearn.preprocessing import StandardScaler
+x = irisDataSet
+y = np.array([0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+ 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,
+ 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2,
+ 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2,
+ 2, 2])
 
 # Create standardizer
 standardizer = StandardScaler()
 
 # Standardize data set
-data_standardized = standardizer.fit_transform(irisDataSet)
+data_standardized = standardizer.fit_transform(x)
 
-# Two nearest neighbors
-nearest_neighbors = NearestNeighbors(n_neighbors=2).fit(data_standardized)
+# Train knn classifier
+nearest_neighbors = KNeighborsClassifier(n_neighbors=5, n_jobs=-1).fit(data_standardized, y)
 
 # A new entry to test (i.e. a new unidentified iris with measurements)
 
 sepalLength = float(input("Please enter sepal length measurement for unidentified iris: "))
 sepalWidth = float(input("Please enter sepal width measurement for unidentified iris: "))
 petalLength = float(input("Please enter petal length measurement for unidentified iris: "))
-petalWidth = float(input("Please enter petal width measurement for unidentified iris: "))
+petalWidth = float(input("Please enter petal width measurement for unidentified iris: \n"))
 
 new_entry = [sepalLength, sepalWidth, petalLength, petalWidth]
 
-# Find 
+#Predict the class of new_entry
+predict = nearest_neighbors.predict([new_entry, new_entry])
+
+if predict[0] == 0:
+    print("It matches close to a Setosa in data set.")
+elif predict[0] == 1:
+    print("It matches close to a virginica in data set.")
+elif predict[0] == 2:
+    print("It matches close to a versicolor in data set.")
+
+'''Finding nearest neighbors
 distances, indices = nearest_neighbors.kneighbors([new_entry])
 
 nearestN = data_standardized[indices]
@@ -236,7 +252,7 @@ for i in range(0, len(setosaList)):
     elif Virginica[i] == nearestN[0] | Virginica[i] == nearestN[1]:
         print("It matches close to a virginica in data set.")
     elif Versicolor[i] == nearestN[0] | Versicolor[i] == nearestN[1]:
-        print("It matches close to a versicolor in data set.")
+        print("It matches close to a versicolor in data set.")'''
 
 
 # By these outputs it can be determined to some degree of sucess which iris it is.
