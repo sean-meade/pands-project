@@ -20,7 +20,7 @@ irises are and also indicates where the petal and sepal are on the iris plant.
 
 
 
-![Image of All three Iris flowers](Images-and-tables/Iris Comparison.png)
+![Image of All three Iris flowers](Images-and-tables/IrisComparison.png)
 
 
 
