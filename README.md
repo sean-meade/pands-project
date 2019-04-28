@@ -51,11 +51,51 @@ statistics”.[1]
 First off, I think it would help to have a visual representation of the data set. Below is a table 
 containing the first 4 rows of the data set and the headings of each column.
 
-![First four rows of the data set](Images-and-tables/firstFourRows.png)
+![First four rows of the data set](Images-and-tables/firstFourRows.PNG)
+### First four rows of the data set
 
 The heading of each column (i.e. sepal length, sepal width, petal length etc.) are called attributes. 
 You can think of attributes as features each flower has. 
 
 This data set contains 150 rows. This is further split into three. The first 50 are the measurements 
 from setosa. The second 50 are from versicolor. The third set of 50 are from virginica.
+
+First by splitting the data up into these three groups and preforming some calculations for minimum 
+and maximum values, the mean and the standard deviation we can draw some initial conclusions (see table below).
+
+![Min, max, mean and standard deviation of all columns of measurements](Images-and-tables/minMaxMeanStd.PNG)
+### Min, max, mean and standard deviation of all columns of measurements
+
+From this table it’s clear that Setosa over all have the smallest variation in measurements (standard 
+deviation or std in table). This gives us an early indication that if we are going to be able to discern 
+the sepal measurements for both Versicolor and Virginica are quite close. This may indicate that the 
+sepal measurements may be a poor choice for discerning between the two. In fact, across all three 
+flowers the Sepal width ranges are quite close. From first glance it’s clear that if we are going to find 
+a method of telling these flowers apart most if not all the features will have to be considered. This is 
+what makes this data set so popular for testing different sorting algorithms and teaching.
+
+We’ll look at some graphs that compare certain features. The first is the sepal length plotted against the sepal 
+width. From this it’s clear to see that the setosa is almost complete separate from the other two only for the
+little outlier in the bottom left. So, comparing the sepal length against the sepal width is possibly a good way of
+discerning it from the others. This might be done by getting a range of ratios of length and width and seeing if an
+unknown one is within that band. If it is there is a high chance it is a setosa. However versicolor and virginica
+seem to be scattered together with no possible way of separating the two.
+
+![Sepal length vs. Sepal Width](Images-and-tables/SepalLvsW.PNG)
+### Sepal length vs. Sepal Width
+
+The next graph is petal length plotted against petal width. This shows a distinct separation of setosa from
+versicolor and virginica. Those last two have more some cross over but not as much as the sepal graph. 
+
+![Petal length vs. Petal Width](Images-and-tables/PetalLvsW.PNG)
+### Petal length vs. Petal Width
+
+
+
+
+
+
+
+
+
 
