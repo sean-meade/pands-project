@@ -240,7 +240,9 @@ nearest_neighbors = KNeighborsClassifier(n_neighbors=5, n_jobs=-1).fit(data_stan
 sepalLength = float(input("Please enter sepal length measurement for unidentified iris: "))
 sepalWidth = float(input("Please enter sepal width measurement for unidentified iris: "))
 petalLength = float(input("Please enter petal length measurement for unidentified iris: "))
-petalWidth = float(input("Please enter petal width measurement for unidentified iris: \n"))
+petalWidth = float(input("Please enter petal width measurement for unidentified iris: "))
+
+print("\n")
 
 new_entry = [sepalLength, sepalWidth, petalLength, petalWidth]
 
